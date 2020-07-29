@@ -1,0 +1,27 @@
+:root{
+  
+}
+:root[dark]{
+  
+}
+
+body {
+  
+}
+
+.wrapper {
+  min-width: 100vw;
+  min-height: 100vh;
+  background: #{$dev-background};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  .container{
+    background: #{$dev-background-front};
+    border: 1px solid #{$dev-background-border};
+    min-height: calc(1080px / 1.5);
+    min-width: calc(1920px / 1.5);
+    box-shadow: 0px 10px 38px -5px rgba(0,0,0,0.75);
+  }
+}

@@ -1,0 +1,12 @@
+$vports: (
+  tiny: 360px,
+  mb: 480px,
+  sm: 720px,
+  md: 992px,
+  hd: 1200px,
+  uhd: 1800px,
+);
+
+@forward "@littlemissrobot/sass-spacing" with ($base-font-size: 16px);
+
+@forward "@littlemissrobot/sass-breakpoints" with ($viewports: $vports);

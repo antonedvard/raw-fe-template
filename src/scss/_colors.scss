@@ -1,0 +1,10 @@
+@use "sass:map";
+$c:(
+  "darkGray": rgba(34, 34, 38, 1.00),
+  
+);
+
+
+$dev-background: map-get($c, "darkGray");
+$dev-background-front: lighten($dev-background, 3%);
+$dev-background-border: lighten($dev-background-front, 15%);
