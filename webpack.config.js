@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const {
   CleanWebpackPlugin,
 } = require("clean-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const viewsFolder = P.resolve(__dirname, "src", "views");
 
@@ -28,7 +29,11 @@ const webpackOpts = {
     path: P.resolve(__dirname, "dist"),
     publicPath: "/",
   },
-  devtool: "inline-source-map",
+  mode: process.env.NODE_ENV,
+  devtool:
+    process.env.NODE_ENV === "development"
+      ? "eval-cheap-module-source-map"
+      : false,
   devServer: {
     contentBase: "./dist",
     hot: true,
@@ -53,8 +58,9 @@ const webpackOpts = {
       {
         test: /\.scss$/,
         use: [
-          "style-loader",
-          // MiniCssExtractPlugin.loader,
+          process.env.NODE_ENV === "development"
+            ? "style-loader"
+            : MiniCssExtractPlugin.loader,
           "css-loader",
           {
             loader: "sass-loader",
@@ -81,6 +87,19 @@ const webpackOpts = {
   plugins: [
     new CleanWebpackPlugin({
       cleanStaleWebpackAssets: false,
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: "src/assets",
+          to: "assets",
+          globOptions: {
+            dot: false,
+            gitignore: false,
+            ignore: [".gitignore"],
+          },
+        },
+      ],
     }),
     new MiniCssExtractPlugin({
       filename: "css/[name].css",

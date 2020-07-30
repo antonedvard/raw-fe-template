@@ -1,27 +1,37 @@
 :root{
-  
+  --text-color: #{$text-color-onLight};
+  --dev-background: #{$dev-background};
+  --dev-background-front: #{$dev-background-front};
+  --dev-background-border: #{$dev-background-border};
 }
 :root[dark]{
-  
+  --text-color: #{$text-color-onDark};
+  --dev-background: #{$dev-background-dark};
+  --dev-background-front: #{$dev-background-front-dark};
+  --dev-background-border: #{$dev-background-border-dark};
 }
 
 body {
-  
+  color: var(--text-color);
 }
 
 .wrapper {
   min-width: 100vw;
   min-height: 100vh;
-  background: #{$dev-background};
+  background: var(--dev-background);
   display: flex;
   align-items: center;
   justify-content: center;
   
   .container{
-    background: #{$dev-background-front};
-    border: 1px solid #{$dev-background-border};
+    background: var(--dev-background-front);
+    border: 1px solid var(--dev-background-border);
     min-height: calc(1080px / 1.5);
     min-width: calc(1920px / 1.5);
     box-shadow: 0px 10px 38px -5px rgba(0,0,0,0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
 }

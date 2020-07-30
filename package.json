@@ -4,10 +4,10 @@
   "description": "A base template for simple frontend beginning!",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --inline --progress --colors",
-    "dev": "webpack --mode development",
-    "watch": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "start": "env NODE_ENV=development webpack-dev-server --config webpack.config.js --inline --progress --colors",
+    "dev": "env NODE_ENV=development webpack --config webpack.config.js",
+    "watch": "env NODE_ENV=development webpack --config webpack.config.js --watch",
+    "build": "env NODE_ENV=production webpack --config webpack.config.js"
   },
   "keywords": [
     "template",

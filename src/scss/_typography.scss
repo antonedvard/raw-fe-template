@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&display=swap');
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 62.5%;
+}
+
+h1,h2,h3,h4,h5,h6{
+  color: var(--dev-background-border);
+  font-family: 'Rubik', sans-serif;
+  font-weight: 700;
+}
+h1{
+  font-size: 6.2em;
+  letter-spacing: .02em;
+}
+h2{
+  font-size: 5.2em;
+}
+h3{
+  font-size: 4.2em;
+}
+h4{
+  font-size: 3.2em;
+}
+h5{
+  font-size: 2.2em;
+}
+h6{
+  font-size: 1.6em;
+  text-transform: uppercase;
+}
+
+p{
+  font-size: 1.6em;
+}
+
+span{
+  font-size: 1.6em;
+}
