@@ -7,6 +7,7 @@ const {
   CleanWebpackPlugin,
 } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const { VueLoaderPlugin } = require("vue-loader");
 
 const viewsFolder = P.resolve(__dirname, "src", "views");
 
@@ -41,6 +42,10 @@ const webpackOpts = {
   },
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        loader: "vue-loader",
+      },
       // {
       //   test: /\.tsx?$/,
       //   exclude: /node_modules/,
@@ -79,6 +84,21 @@ const webpackOpts = {
   resolve: {
     // extensions: [".tsx", ".ts", ".js"],
     alias: {
+      "@": P.resolve(__dirname, "src"),
+      "vue$":
+        process.env.NODE_ENV === "development"
+          ? P.resolve(
+              __dirname,
+              "node_modules",
+              "vue/dist/",
+              "vue.esm-bundler.js",
+            )
+          : P.resolve(
+              __dirname,
+              "node_modules",
+              "vue/dist/",
+              "vue.runtime.esm-bundler.js",
+            ),
       // Utilities: path.resolve(__dirname, "src/utilities/"),
       // Templates: path.resolve(__dirname, "src/templates/"),
     },
@@ -88,6 +108,7 @@ const webpackOpts = {
     new CleanWebpackPlugin({
       cleanStaleWebpackAssets: false,
     }),
+    new VueLoaderPlugin(),
     new CopyWebpackPlugin({
       patterns: [
         {
